@@ -2,53 +2,53 @@ class MyfirstThread extends Thread
 {
 	int array[];
 	static int i=0;
-	int sum=0;
+	static long sum=0;
 	MyfirstThread(int[] array)
 	{
 		this.array=array;
 	}
 	public void run()
 	{
-		for(;i<10;i++) {
+		for(;i<100000;i++) {
 			if(i%2==0)
 			{
 				sum=sum+array[i];
 			}
-			System.out.println(sum+"in one");
+			//System.out.println(sum+"in one");
 		}
-		
+	System.out.println(sum +"is the sum1");	
 	}
 }
 class MysecondThread extends Thread
 {
 	int array[];
 	static int i=0;
-	int sum=0;
+	static long sum=0;
 	MysecondThread(int[] array)
 	{
 		this.array=array;
 	}
 	public void run()
 	{
-		for(;i<10;i++) {
+		for(;i<100000;i++) {
 			if(i%2!=0)
 			{
 				sum=sum+array[i];
 			}
-			System.out.println(sum+"in two");
+			//System.out.println(sum+"in two");
 		}
 		
-		
+		System.out.println(sum +"is sum2");
 	}
 }
 public class ThreadExample {
 
 	public static void main(String args[])
 	{
-	long startTime = System.nanoTime();
-	int arr[]=new int[10];
+	long start=System.nanoTime();
+	int arr[]=new int[100000];
 	int i;
-	for(i=0;i<10;i++)
+	for(i=0;i<100000;i++)
 	{
 		arr[i]=i+1;
 	}
@@ -59,8 +59,9 @@ public class ThreadExample {
 	MysecondThread obj2=new MysecondThread(arr);
 	Thread t2=new Thread(obj2);
 	t2.start();
-	long endTime   = System.nanoTime();
-	long totalTime = endTime - startTime;
-	System.out.println(totalTime);
+	long end=System.nanoTime();
+	long total=end-start;
+	System.out.println(total);
+	
 	}
 }
